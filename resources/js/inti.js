@@ -1,6 +1,6 @@
 let aero = "El Alto";
 let tipo = "L";
-date=new Date();
+date = new Date();
 cargarItin();
 setInterval(() => {
     var today = new Date();
@@ -31,7 +31,9 @@ function cargarItin() {
         url: "/Fids/itin/vuelos",
         data: {
             aero: aero,
-            fecha: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()}`,
+            fecha: `${date.getFullYear()}-${
+                date.getMonth() + 1
+            }-${date.getDay()}`,
             tipo: tipo,
         },
         // dataType: "json */
@@ -39,19 +41,33 @@ function cargarItin() {
             console.log(response);
             html = response
                 .map(function (e, i, val) {
-                    if ($('#th_destino').offsetWidth<=100) {
+                    if ($("#th_destino").offsetWidth <= 100) {
                         ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA}  </p></MARQUEE>`;
                     } else {
                         ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
                     }
+                    circle='';
+                    if (e.OBSERVACION == "NUEVA HORA") {
+                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                    }
+                    if (e.OBSERVACION == "CANCELADO") {
+                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                    }
+                    if (e.OBSERVACION == "EN HORARIO") {
+                        circle=`<i class="fas fa-circle bg-green" ></i>`;
+                    }
+                    if (e.OBSERVACION == "PRE-EMBARQUE") {
+                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                    }
+
                     return (h = `
                 <tr>
                     <td>${e.NOMBRE_AEROLINEA}</td>
-                    <td>${e.HORA_ESTIMADA}</td>
+                    <td>${circle} ${e.HORA_ESTIMADA}</td>
                     <td style="text-align:center">${ruta_1}</td>
                     <td>${e.NRO_VUELO}</td>
                     <td style="color:rgb(138, 224, 9)" name="puerta" >${e.NRO_PUERTA}</td>
-                    <td>${e.OBSERVACION}</td>
+                    <td style="color:yellow" >${e.OBSERVACION}</td>
                 </tr>
                 `);
                 })
@@ -62,7 +78,7 @@ function cargarItin() {
 }
 
 function changeTipo(val) {
-console.log(  document.getElementById('th_destino').offsetWidth );
+    console.log(document.getElementById("th_destino").offsetWidth);
     if (aero == val) {
         return;
     }
@@ -70,7 +86,7 @@ console.log(  document.getElementById('th_destino').offsetWidth );
     cargarItin();
 }
 function chageTipo(val) {
-    if (tipo == val || tipo =="null") {
+    if (tipo == val || tipo == "null") {
         return;
     }
     tipo = val;

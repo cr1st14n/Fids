@@ -9,7 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <!-- CSS only -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <title>NAABOl|FIDS</title>
     <style>
         body {
@@ -73,43 +74,42 @@
 </head>
 
 <body>
+    <button class=" btn btn-block"> <i class="fa fa-circle bg-red"></i>321</button>
+
     <div class=" card" style="background-color: rgb(7, 7, 88)">
         <div class=" card-body">
             <form>
                 <div class="row" style="background-color: rgb(7, 7, 88)">
                     <div class="col-sm-4">
                         <div class="form-group ">
-                            <select class=" form-control form-control-sm" name="" id="inp_terminal" onchange="changeTipo(this.value)"
+                            <select class=" form-control form-control-sm" name="" id="inp_terminal"
+                                onchange="changeTipo(this.value)"
                                 style="background-color:rgb(88, 114, 161); color:white ">
-                                <option value="null">Seleccionar Terminal</option>
+                                <option value="null" selected>Seleccionar Terminal</option>
+                                <option value="Viru Viru">VIRU VIRU</option>
                                 <option value="El ALTo">EL ALTO</option>
-                                <option value="Viru Viru">VIRU VIRU</option>
-                                <option value="Jorge Wilstermann">jorge Wilstermann</option>
-                                <option value="Tarija">Tarija</option>
-                                <option value="Uyuni">Uyuni</option>
-                                <option value="Rurrenabaque">Rurrenabaque</option>
-                                <option value="Guayamerin">Guayamerin</option>
-                                <option value="Potosi">Potosi</option>
-                                <option value="Cobija">Cobija</option>
-                                <option value="Riberalta">Riberalta</option>
-                                <option value="Oruro">Oruro</option>
-                                <option value="yacuiba">yacuiba</option>
-                                <option value="Trinidad">Trinidad</option>
+                                <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
+                                <option value="Cobija">COBIJA</option>
+                                <option value="Guayamerin">GUAYAMERIN</option>
+                                <option value="Riberalta">RIBERALTA</option>
+                                <option value="Sucre">SUCRE</option>
+                                <option value="Tarija">TARIJA</option>
+                                <option value="Trinidad">TRINIDAD</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="tipo_1" value="L" onclick="chageTipo(this.value)"
-                                class="custom-control-input" checked="on" checked>
+                            <input type="radio" id="customRadioInline1" name="tipo_1" value="L"
+                                onclick="chageTipo(this.value)" class="custom-control-input" checked="on" checked>
                             <label class="custom-control-label" for="customRadioInline1"
                                 style="color: white">LLEGADAS</label>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="tipo_1" value="S" onclick="chageTipo(this.value)"
-                                class="custom-control-input">
+                            <input type="radio" id="customRadioInline1" name="tipo_1" value="S"
+                                onclick="chageTipo(this.value)" class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline1"
                                 style="color: white">SALIDAS</label>
                         </div>
@@ -181,7 +181,7 @@
 
 
     <marquee style="color: white" scrolldelay="200" truespeed>
-        <p style="color: white"> Este texto se mueve de derecha a izquierda</p>
+        <p style="color: white"> NAABOL | ITINERARIODE VUELOS NACIONALES INTERNACIONALES </p>
     </marquee>
 
 
@@ -229,6 +229,11 @@
     -->
     <script src="{{ asset('resources/js/JQ/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('resources/js/inti.js') }}"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+
 
 </body>
 
