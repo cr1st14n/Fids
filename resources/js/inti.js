@@ -1,6 +1,6 @@
-let aero='El Alto'
-let tipo='L'
-
+let aero = "El Alto";
+let tipo = "L";
+date=new Date();
 cargarItin();
 setInterval(() => {
     var today = new Date();
@@ -12,28 +12,26 @@ setInterval(() => {
     cargarItin();
 }, 20000);
 
-$('#time_1').click(function (e) {
+$("#time_1").click(function (e) {
     e.preventDefault();
-$('#md_1').modal('show');
+    $("#md_1").modal("show");
 });
 
-$('#form_tipoItin').submit(function (e) {
+$("#form_tipoItin").submit(function (e) {
     e.preventDefault();
 
-    aero= $('#aero').val();
-    tipo= $('#tipo').val();
-    $('#md_1').modal('hide');
-    cargarItin()
+    aero = $("#aero").val();
+    tipo = $("#tipo").val();
+    $("#md_1").modal("hide");
+    cargarItin();
 });
-
-
 function cargarItin() {
     $.ajax({
         type: "get",
         url: "/Fids/itin/vuelos",
         data: {
             aero: aero,
-            fecha: "2022-11-28",
+            fecha: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()}`,
             tipo: tipo,
         },
         // dataType: "json */
@@ -41,7 +39,7 @@ function cargarItin() {
             console.log(response);
             html = response
                 .map(function (e, i, val) {
-                    if (e.RUTA.length > 10) {
+                    if ($('#th_destino').offsetWidth<=100) {
                         ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA}  </p></MARQUEE>`;
                     } else {
                         ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
@@ -61,4 +59,20 @@ function cargarItin() {
             $("#table_itin").html(html);
         },
     });
+}
+
+function changeTipo(val) {
+console.log(  document.getElementById('th_destino').offsetWidth );
+    if (aero == val) {
+        return;
+    }
+    aero = val;
+    cargarItin();
+}
+function chageTipo(val) {
+    if (tipo == val || tipo =="null") {
+        return;
+    }
+    tipo = val;
+    cargarItin();
 }

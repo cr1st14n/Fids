@@ -14,8 +14,8 @@
     <style>
         body {
             background-color: black;
-            opacity: 0.5;
-            background-image: "";
+            /* opacity: 0.5;
+            background-image: ""; */
         }
 
         table {
@@ -61,69 +61,125 @@
         [class|=formulario] {
             background-color: white
         }
+
+        #img_1 {
+            position: fixed;
+            top: 5px;
+            right: 5px;
+            width: 200px;
+            height: 50px;
+        }
     </style>
 </head>
 
 <body>
+    <div class=" card" style="background-color: rgb(7, 7, 88)">
+        <div class=" card-body">
+            <form>
+                <div class="row" style="background-color: rgb(7, 7, 88)">
+                    <div class="col-sm-4">
+                        <div class="form-group ">
+                            <select class=" form-control form-control-sm" name="" id="inp_terminal" onchange="changeTipo(this.value)"
+                                style="background-color:rgb(88, 114, 161); color:white ">
+                                <option value="null">Seleccionar Terminal</option>
+                                <option value="El ALTo">EL ALTO</option>
+                                <option value="Viru Viru">VIRU VIRU</option>
+                                <option value="Jorge Wilstermann">jorge Wilstermann</option>
+                                <option value="Tarija">Tarija</option>
+                                <option value="Uyuni">Uyuni</option>
+                                <option value="Rurrenabaque">Rurrenabaque</option>
+                                <option value="Guayamerin">Guayamerin</option>
+                                <option value="Potosi">Potosi</option>
+                                <option value="Cobija">Cobija</option>
+                                <option value="Riberalta">Riberalta</option>
+                                <option value="Oruro">Oruro</option>
+                                <option value="yacuiba">yacuiba</option>
+                                <option value="Trinidad">Trinidad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="tipo_1" value="L" onclick="chageTipo(this.value)"
+                                class="custom-control-input" checked="on" checked>
+                            <label class="custom-control-label" for="customRadioInline1"
+                                style="color: white">LLEGADAS</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="tipo_1" value="S" onclick="chageTipo(this.value)"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline1"
+                                style="color: white">SALIDAS</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" style="text-align: left">
+                        <img id="img_1" src="{{ asset('resources/plantilla/img/LOGO_NAABOL_0.jpg') }}"
+                            alt="" sizes="" width="80" height="80" srcset="">
+                    </div>
 
-    <div class="row formulario">
-        <div class=" col-lg-6">
-            <select class=" form-control" name="" id=""> Seleccionar Terminal</select>
+                </div>
+            </form>
         </div>
-        <div class=" col-lg-6">
-            <select class=" form-control" name="" id=""> Tipo</select>
+
+    </div>
+    </div>
+    <div class="card" style="background-color: black" style="width: 80%">
+        <div class=" card-body">
+            <div class="row">
+
+                <div class=" col-lg-1">
+                    <img src="{{ asset('resources/plantilla/img/salidas.png') }}" alt="" sizes=""
+                        width="80" height="80" srcset="">
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
+                    <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
+                </div>
+                <div class="col-lg-3"></div>
+                <div class="col-lg-4">
+                    <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
+                </div>
+            </div>
+            <table class="table table-responsive-lg " id="th_destino">
+                <thead>
+                    <tr>
+                        <th width="30%">
+                            <p>LINEA AÉREA</p>ARILINE
+                        </th>
+                        <th>
+                            <p>HORA</p>TIME
+                        </th>
+                        <th width="60%" id="th_destino">
+                            <p>DESTINO</p>DESTINATION
+                        </th>
+                        <th>
+                            <p>VUELO</p>FLIGHT
+                        </th>
+                        <th>
+                            <p>PUERTA</p>GATE
+                        </th>
+                        <th>
+                            <p>COMENTARIOS</p>REMARKS
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="table_itin">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="row">
 
-        <div class=" col-lg-1">
-            <img src="{{ asset('resources/plantilla/img/salidas.png') }}" alt="" sizes="" width="80"
-                height="80" srcset="">
-        </div>
-        <div class="col-lg-4">
-            <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
-            <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
-        </div>
-        <div class="col-lg-3"></div>
-        <div class="col-lg-4">
-            <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
-        </div>
-    </div>
-    <table class="table table-responsive-lg ">
-        <thead>
-            <tr>
-                <th width="30%">
-                    <p>LINEA AÉREA</p>ARILINE
-                </th>
-                <th>
-                    <p>HORA</p>TIME
-                </th>
-                <th width="60%">
-                    <p>DESTINO</p>DESTINATION
-                </th>
-                <th>
-                    <p>VUELO</p>FLIGHT
-                </th>
-                <th>
-                    <p>PUERTA</p>GATE
-                </th>
-                <th>
-                    <p>COMENTARIOS</p>REMARKS
-                </th>
-            </tr>
-        </thead>
-        <tbody id="table_itin">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
     <marquee style="color: white" scrolldelay="200" truespeed>
         <p style="color: white"> Este texto se mueve de derecha a izquierda</p>
     </marquee>
@@ -149,7 +205,8 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary btn-sm"
+                            data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary btn-sm">Cargar Itinerario</button>
                     </div>
                 </form>
