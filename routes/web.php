@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [itinerarioController::class, 'view_1']);
+
 route::get('test', [itinerarioController::class, 'test']);
 Route::group(['prefix' => 'vuelos'], function () {
     route::get('/', [intvueController::class, 'home']);

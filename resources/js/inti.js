@@ -85,7 +85,8 @@ function cargarItin() {
                 .join(" ");
             $("#table_itin").html(html);
             if (response.length <= 0) {
-                $('#est_11').html(`Actualizando..`);
+                $('#est_11').html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
+                <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>`);
                 console.log('actualizando..');
             }else{
                 $('#est_11').html(``);

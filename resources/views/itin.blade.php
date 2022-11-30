@@ -70,8 +70,8 @@
             position: fixed;
             top: 5px;
             right: 5px;
-            width: 200px;
-            height: 50px;
+            width: 250px;
+            height: 60px;
         }
 
         thead {
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="col-sm-2" style="text-align: left">
-                        <img id="img_1" src="{{ asset('resources/plantilla/img/LOGO_NAABOL_0.jpg') }}"
+                        <img id="img_1" src="{{ asset('resources/plantilla/img/LOGO_NAABOL_0.png') }}"
                             alt="" sizes="" width="80" height="80" srcset="">
                     </div>
 
