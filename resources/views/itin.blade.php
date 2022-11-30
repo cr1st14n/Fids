@@ -185,7 +185,10 @@
 
 
     <marquee style="color: white" scrolldelay="200" truespeed>
-        <p style="color: white"> NAABOL | ITINERARIODE VUELOS NACIONALES INTERNACIONALES </p>
+        <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es
+             responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
+
+        </p>
     </marquee>
 
 

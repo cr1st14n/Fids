@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Itinerario;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -35,7 +36,7 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        return Itinerario::whereDate('FECHA', $request->input('fecha'))
+        return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
         ->whereNot('OBSERVACION','CERRADO')
         ->where('AEROPUERTO', $request->input('aero'))
         ->where('TIPO_OPERACION', $request->input('tipo'))
