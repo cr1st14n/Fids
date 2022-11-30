@@ -88,9 +88,8 @@
                             <select class=" form-control form-control-sm" name="" id="inp_terminal"
                                 onchange="changeTipo(this.value)"
                                 style="background-color:rgb(88, 114, 161); color:white ">
-                                <option value="null" selected>Seleccionar Terminal</option>
                                 <option value="Viru Viru">VIRU VIRU</option>
-                                <option value="El ALTo">EL ALTO</option>
+                                <option value="El ALTo" selected>EL ALTO</option>
                                 <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
                                 <option value="Cobija">COBIJA</option>
                                 <option value="Guayamerin">GUAYAMERIN</option>
@@ -171,12 +170,7 @@
                 </thead>
                 <tbody id="table_itin">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+
                     </tr>
                 </tbody>
             </table>

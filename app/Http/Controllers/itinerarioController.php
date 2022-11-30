@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Stmt\Return_;
 
 class itinerarioController extends Controller
 {
@@ -36,12 +37,24 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
-        ->whereNot('OBSERVACION','CERRADO')
-        ->where('AEROPUERTO', $request->input('aero'))
-        ->where('TIPO_OPERACION', $request->input('tipo'))
-        ->orderBy('HORA_ESTIMADA','asc')
-        ->get();
+        // return $request;
+        if ($request->input('tipo')=='L' ) {
+            # code...
+            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+            ->where('AEROPUERTO', $request->input('aero'))
+            ->where('TIPO_OPERACION', $request->input('tipo'))
+            ->whereNot('OBSERVACION','ARRIBO')
+            ->orderBy('CORRELATIVO','asc')
+            ->get();
+        } else {
+            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+            ->where('AEROPUERTO', $request->input('aero'))
+            ->where('TIPO_OPERACION', $request->input('tipo'))
+            ->whereNot('OBSERVACION','CERRADO')
+            ->orderBy('CORRELATIVO','asc')
+            ->get();
+        }
+
     }
     public function view_1()
     {

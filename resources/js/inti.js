@@ -29,14 +29,12 @@ $("#form_tipoItin").submit(function (e) {
     cargarItin();
 });
 function cargarItin() {
+    $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
     $.ajax({
         type: "get",
         url: "/Fids/itin/vuelos",
         data: {
             aero: aero,
-            fecha: `${date.getFullYear()}-${
-                date.getMonth() + 1
-            }-${date.getDay()}`,
             tipo: tipo,
         },
         // dataType: "json */
@@ -64,6 +62,9 @@ function cargarItin() {
                     }
                     if (e.OBSERVACION == "PRE-EMBARQUE") {
                         circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                    }
+                    if (e.OBSERVACION == "ABORDANDO") {
+                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
                     }
 
                     return (h = `
