@@ -11,6 +11,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- CSS only -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>NAABOl|FIDS</title>
     <style>
         body {
@@ -34,7 +35,7 @@
 
         p {
             color: rgb(106, 188, 190);
-            color: rgb(138, 224, 9)
+            margin-bottom: 0%
         }
 
         .puerta {
@@ -70,12 +71,14 @@
             width: 200px;
             height: 50px;
         }
+        thead{
+            border-top: 3px solid white;
+            border-bottom: 3px solid white;
+        }
     </style>
 </head>
 
 <body>
-    <button class=" btn btn-block"> <i class="fa fa-circle bg-red"></i>321</button>
-
     <div class=" card" style="background-color: rgb(7, 7, 88)">
         <div class=" card-body">
             <form>
@@ -130,10 +133,10 @@
             <div class="row">
 
                 <div class=" col-lg-1">
-                    <img src="{{ asset('resources/plantilla/img/salidas.png') }}" alt="" sizes=""
+                    <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt="" sizes=""
                         width="80" height="80" srcset="">
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" id="desc_ruta">
                     <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
                     <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
                 </div>
@@ -143,11 +146,12 @@
                 </div>
             </div>
             <table class="table table-responsive-lg " id="th_destino">
-                <thead>
+                <thead >
                     <tr>
                         <th width="30%">
                             <p>LINEA AÉREA</p>ARILINE
                         </th>
+                        <th></th>
                         <th>
                             <p>HORA</p>TIME
                         </th>

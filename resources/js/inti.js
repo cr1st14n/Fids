@@ -1,6 +1,9 @@
 let aero = "El Alto";
 let tipo = "L";
 date = new Date();
+
+imgAero = { "BOLIVIANA DE AVIACION": "B50015.gif" };
+
 cargarItin();
 setInterval(() => {
     var today = new Date();
@@ -46,24 +49,28 @@ function cargarItin() {
                     } else {
                         ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
                     }
-                    circle='';
+                    circle = "";
                     if (e.OBSERVACION == "NUEVA HORA") {
-                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                    }
+                    if (e.OBSERVACION == "ARRIBO") {
+                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "CANCELADO") {
-                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "EN HORARIO") {
-                        circle=`<i class="fas fa-circle bg-green" ></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "PRE-EMBARQUE") {
-                        circle=`<i class="fas fa-circle bg-red" ></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
                     }
 
                     return (h = `
                 <tr>
-                    <td>${e.NOMBRE_AEROLINEA}</td>
-                    <td>${circle} ${e.HORA_ESTIMADA}</td>
+                    <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
+                    <td>${circle}</td>
+                    <td> ${e.HORA_ESTIMADA}</td>
                     <td style="text-align:center">${ruta_1}</td>
                     <td>${e.NRO_VUELO}</td>
                     <td style="color:rgb(138, 224, 9)" name="puerta" >${e.NRO_PUERTA}</td>
@@ -86,9 +93,23 @@ function changeTipo(val) {
     cargarItin();
 }
 function chageTipo(val) {
-    if (tipo == val || tipo == "null") {
-        return;
+    if (val == "L") {
+        tipo = val;
+        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
+        $("#desc_ruta").html(`
+        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
+        <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
+        `);
+
+        cargarItin();
     }
-    tipo = val;
-    cargarItin();
+    if (val == "S") {
+        tipo = val;
+        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
+        $("#desc_ruta").html(`
+        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">SALIDAS</h4>
+        <h4 class="titulo_1" style=" color:white ">DEPARTURES</h4>
+        `);
+        cargarItin();
+    }
 }

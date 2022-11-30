@@ -35,7 +35,7 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        return $request->input('fecha');
+        // return $request->input('fecha');
         return Itinerario::whereDate('FECHA', $request->input('fecha'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
             ->where('AEROPUERTO', $request->input('aero'))
