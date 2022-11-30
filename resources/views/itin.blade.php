@@ -10,8 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- CSS only -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>NAABOl|FIDS</title>
     <style>
         body {
@@ -71,9 +73,65 @@
             width: 200px;
             height: 50px;
         }
-        thead{
+
+        thead {
             border-top: 3px solid white;
             border-bottom: 3px solid white;
+        }
+
+        .parpadea {
+
+            animation-name: parpadeo;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+
+            -webkit-animation-name: parpadeo;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        @-moz-keyframes parpadeo {
+            0% {
+                opacity: 1.0;
+            }
+
+            50% {
+                opacity: 0.0;
+            }
+
+            100% {
+                opacity: 1.0;
+            }
+        }
+
+        @-webkit-keyframes parpadeo {
+            0% {
+                opacity: 1.0;
+            }
+
+            50% {
+                opacity: 0.0;
+            }
+
+            100% {
+                opacity: 1.0;
+            }
+        }
+
+        @keyframes parpadeo {
+            0% {
+                opacity: 1.0;
+            }
+
+            50% {
+                opacity: 0.0;
+            }
+
+            100% {
+                opacity: 1.0;
+            }
         }
     </style>
 </head>
@@ -91,12 +149,17 @@
                                 <option value="Viru Viru">VIRU VIRU</option>
                                 <option value="El ALTo" selected>EL ALTO</option>
                                 <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
-                                <option value="Cobija">COBIJA</option>
+                                <option value="Rurrenabaque">RURRENABAQUE</option>
                                 <option value="Guayamerin">GUAYAMERIN</option>
+                                <option value="Potosi">POTOSI</option>
+                                <option value="Cobija">COBIJA</option>
                                 <option value="Riberalta">RIBERALTA</option>
-                                <option value="Sucre">SUCRE</option>
-                                <option value="Tarija">TARIJA</option>
+                                <option value="Oruro">ORURO</option>
+                                <option value="Yacuiba">YACUIBA</option>
                                 <option value="Trinidad">TRINIDAD</option>
+                                <option value="Uyuni">UYUNI</option>
+                                <option value="Tarija">TARIJA</option>
+                                <option value="Sucre">SUCRE</option>
                             </select>
                         </div>
                     </div>
@@ -132,8 +195,8 @@
             <div class="row">
 
                 <div class=" col-lg-1">
-                    <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt="" sizes=""
-                        width="80" height="80" srcset="">
+                    <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
+                        sizes="" width="80" height="80" srcset="">
                 </div>
                 <div class="col-lg-4" id="desc_ruta">
                     <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
@@ -146,7 +209,7 @@
                 </div>
             </div>
             <table class="table table-responsive-lg " id="th_destino">
-                <thead >
+                <thead>
                     <tr>
                         <th width="30%">
                             <p>LINEA AÉREA</p>ARILINE
@@ -181,7 +244,7 @@
 
     <marquee style="color: white" scrolldelay="200" truespeed>
         <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es
-             responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
+            responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
 
         </p>
     </marquee>
@@ -194,17 +257,7 @@
             <div class="modal-content">
                 <form id="form_tipoItin">
                     <div class="modal-body">
-                        <select name="aero" id="aero" required>
-                            <option value="El ALTo">EL ALTO</option>
-                            <option value="Viru Viru">VIRU VIRU</option>
-                            <option value="Jorge Wilstermann">jorge Wilstermann</option>
-                            <option value="Tarija">Tarija</option>
-                            <option value="Sucre">Sucre</option>
-                        </select>
-                        <select name="tipo" id="tipo" required>
-                            <option value="L">LLEGADAS</option>
-                            <option value="S">SALIDAS</option>
-                        </select>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm"

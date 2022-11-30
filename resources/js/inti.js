@@ -58,13 +58,16 @@ function cargarItin() {
                         circle = `<i class="fa-solid fa-circle" style="color:red"></i>`;
                     }
                     if (e.OBSERVACION == "EN HORARIO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
                     }
                     if (e.OBSERVACION == "PRE-EMBARQUE") {
-                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
                     }
                     if (e.OBSERVACION == "ABORDANDO") {
                         circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
+                    }
+                    if (e.OBSERVACION == "EN TIERRA") {
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:yellow"></i>`;
                     }
 
                     return (h = `
