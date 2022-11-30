@@ -146,7 +146,7 @@
                             <select class=" form-control form-control-sm" name="" id="inp_terminal"
                                 onchange="changeTipo(this.value)"
                                 style="background-color:rgb(88, 114, 161); color:white ">
-                                <option value="Viru Viru">VIRU VIRU</option>
+                                <option value="Viru Viru">VIRU VIRU</option>
                                 <option value="El ALTo" selected>EL ALTO</option>
                                 <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
                                 <option value="Rurrenabaque">RURRENABAQUE</option>

@@ -48,27 +48,27 @@ function cargarItin() {
                         ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
                     }
                     circle = "";
+
                     if (e.OBSERVACION == "NUEVA HORA") {
-                        circle = `<i class="fa-solid fa-circle" style="color:orange"></i>`;
-                    }
-                    if (e.OBSERVACION == "ARRIBO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "CANCELADO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:red"></i>`;
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
                     }
                     if (e.OBSERVACION == "EN HORARIO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "PRE-EMBARQUE") {
-                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
-                    }
-                    if (e.OBSERVACION == "ABORDANDO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:yellow"></i>`;
-                    }
-                    if (e.OBSERVACION == "EN TIERRA") {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:yellow"></i>`;
                     }
+                    if (e.OBSERVACION == "ABORDANDO") {
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+                    }
+                    if (e.OBSERVACION == "EN TIERRA") {
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+                    }
+
+
 
                     return (h = `
                 <tr>
