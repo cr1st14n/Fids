@@ -15,11 +15,6 @@ setInterval(() => {
     cargarItin();
 }, 20000);
 
-$("#time_1").click(function (e) {
-    e.preventDefault();
-    $("#md_1").modal("show");
-});
-
 $("#form_tipoItin").submit(function (e) {
     e.preventDefault();
 
@@ -29,6 +24,8 @@ $("#form_tipoItin").submit(function (e) {
     cargarItin();
 });
 function cargarItin() {
+    $('#est_11').html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
+    `);
     // $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
     $.ajax({
         type: "get",
@@ -56,7 +53,7 @@ function cargarItin() {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
                     }
                     if (e.OBSERVACION == "EN HORARIO") {
-                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle " style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "PRE-EMBARQUE") {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:yellow"></i>`;
@@ -73,11 +70,12 @@ function cargarItin() {
                     return (h = `
                 <tr>
                     <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-                    <td>${circle}</td>
                     <td> ${e.HORA_ESTIMADA}</td>
+                    <td> ${e.HORA_REAL}</td>
                     <td style="text-align:center">${ruta_1}</td>
                     <td>${e.NRO_VUELO}</td>
                     <td style="color:rgb(138, 224, 9)" name="puerta" >${e.NRO_PUERTA}</td>
+                    <td>${circle}</td>
                     <td style="color:yellow" >${e.OBSERVACION}</td>
                 </tr>
                 `);
@@ -108,7 +106,7 @@ function chageTipo(val) {
         tipo = val;
         $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
         $("#desc_ruta").html(`
-        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">LLEGADAS</h4>
+        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS</h4>
         <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
         `);
 

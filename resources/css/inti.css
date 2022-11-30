@@ -1,0 +1,118 @@
+body {
+    background-color: black;
+    /* opacity: 0.5;
+    background-image: ""; */
+}
+
+table {
+    border-color: black;
+
+}
+
+th {
+    color: white;
+}
+
+td {
+    color: white;
+}
+
+p {
+    color: rgb(106, 188, 190);
+    margin-bottom: 0%
+}
+
+.puerta {
+    color: red
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+table,
+tr,
+td {
+    border: none;
+}
+
+[class|=titulo_1] {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+[class|=formulario] {
+    background-color: white
+}
+
+#img_1 {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 250px;
+    height: 60px;
+}
+
+thead {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+.parpadea {
+
+    animation-name: parpadeo;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name: parpadeo;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-moz-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
