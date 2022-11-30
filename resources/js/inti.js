@@ -51,13 +51,13 @@ function cargarItin() {
                     }
                     circle = "";
                     if (e.OBSERVACION == "NUEVA HORA") {
-                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:orange"></i>`;
                     }
                     if (e.OBSERVACION == "ARRIBO") {
                         circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "CANCELADO") {
-                        circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle" style="color:red"></i>`;
                     }
                     if (e.OBSERVACION == "EN HORARIO") {
                         circle = `<i class="fa-solid fa-circle" style="color:greenyellow"></i>`;

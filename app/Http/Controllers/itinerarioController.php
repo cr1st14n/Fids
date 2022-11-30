@@ -35,13 +35,12 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        // return $request->input('fecha');
         return Itinerario::whereDate('FECHA', $request->input('fecha'))
-            ->where('TIPO_OPERACION', $request->input('tipo'))
-            ->where('AEROPUERTO', $request->input('aero'))
-            ->whereNot('OBSERVACION','CERRADO')
-            ->orderBy('HORA_ESTIMADA','asc')
-            ->get();
+        ->whereNot('OBSERVACION','CERRADO')
+        ->where('AEROPUERTO', $request->input('aero'))
+        ->where('TIPO_OPERACION', $request->input('tipo'))
+        ->orderBy('HORA_ESTIMADA','asc')
+        ->get();
     }
     public function view_1()
     {
