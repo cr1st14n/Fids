@@ -29,7 +29,7 @@ $("#form_tipoItin").submit(function (e) {
     cargarItin();
 });
 function cargarItin() {
-    $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
+    // $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
     $.ajax({
         type: "get",
         url: "/Fids/itin/vuelos",
@@ -81,6 +81,12 @@ function cargarItin() {
                 })
                 .join(" ");
             $("#table_itin").html(html);
+            if (response.length <= 0) {
+                $('#est_11').html(`Actualizando..`);
+                console.log('actualizando..');
+            }else{
+                $('#est_11').html(``);
+            }
         },
     });
 }

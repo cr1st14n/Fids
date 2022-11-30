@@ -142,6 +142,7 @@
                 <div class="col-lg-3"></div>
                 <div class="col-lg-4">
                     <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
+                    <h5 class="titulo_1" style=" color:white " id="est_11">TIME</h5>
                 </div>
             </div>
             <table class="table table-responsive-lg " id="th_destino">
