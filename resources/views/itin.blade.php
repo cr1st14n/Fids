@@ -93,28 +93,14 @@
             <table class="table table-responsive-lg " id="th_destino">
                 <thead>
                     <tr>
-                        <th width="20%">
-                            <p>LINEA AÉREA</p>ARILINE
-                        </th>
-                        <th width="20%" style="font-size: 15px">
-                            <p>HORA ESTIMADA</p>ESTIMATED TIME
-                        </th>
-                        <th width="20%" style="font-size: 15px">
-                            <p>HORA REAL</p>ACTUAL TIME
-                        </th>
-                        <th width="40%" id="th_destino">
-                            <p>DESTINO</p>DESTINATION
-                        </th>
-                        <th>
-                            <p>VUELO</p>FLIGHT
-                        </th>
-                        <th>
-                            <p>PUERTA</p>GATE
-                        </th>
-                        <th></th>
-                        <th>
-                            <p>COMENTARIOS</p>REMARKS
-                        </th>
+                        <th width="10%"><p>LINEA AÉREA</p>ARILINE</th>
+                        <th width="10%" style="font-size: 15px"><p>HORA ESTIMADA</p>ESTIMATED TIME</th>
+                        <th width="10%" style="font-size: 15px"><p>HORA REAL</p>ACTUAL TIME</th>
+                        <th width="20%" id="th_destino"><p>DESTINO</p>DESTINATION</th>
+                        <th width="10%"><p>VUELO</p>FLIGHT</th>
+                        <th width="10%"><p>PUERTA</p>GATE</th>
+                        <th width="1%" align="rigth"></th>
+                        <th width="10%"><p>COMENTARIOS</p>REMARKS</th>
                     </tr>
                 </thead>
                 <tbody id="table_itin">

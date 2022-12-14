@@ -50,7 +50,9 @@ class itinerarioController extends Controller
             return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
             ->where('AEROPUERTO', $request->input('aero'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
-            ->whereNot('OBSERVACION','CERRADO')
+            ->whereNot('OBSERVACION_INGLES','@@CERRADO')
+            ->whereNot('OBSERVACION_INGLES','@@ARRIBO')
+            ->whereNot('OBSERVACION_INGLES','CLOSED')
             ->orderBy('CORRELATIVO','asc')
             ->get();
         }

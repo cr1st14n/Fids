@@ -24,7 +24,7 @@ $("#form_tipoItin").submit(function (e) {
     cargarItin();
 });
 function cargarItin() {
-    $('#est_11').html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
+    $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
     `);
     // $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
     $.ajax({
@@ -55,7 +55,10 @@ function cargarItin() {
                     if (e.OBSERVACION == "EN HORARIO") {
                         circle = `<i class="fa-solid fa-circle " style="color:greenyellow"></i>`;
                     }
-                    if (e.OBSERVACION == "PRE-EMBARQUE") {
+                    if (
+                        e.OBSERVACION == "PRE-EMBARQUE" ||
+                        e.OBSERVACION == "PREEMBARCANDO"
+                    ) {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:yellow"></i>`;
                     }
                     if (e.OBSERVACION == "ABORDANDO") {
@@ -64,8 +67,9 @@ function cargarItin() {
                     if (e.OBSERVACION == "EN TIERRA") {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
                     }
-
-
+                    if (e.OBSERVACION == "DEMORADO") {
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
+                    }
 
                     return (h = `
                 <tr>
@@ -83,11 +87,12 @@ function cargarItin() {
                 .join(" ");
             $("#table_itin").html(html);
             if (response.length <= 0) {
-                $('#est_11').html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
+                $("#est_11")
+                    .html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
                 <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>`);
-                console.log('actualizando..');
-            }else{
-                $('#est_11').html(``);
+                console.log("actualizando..");
+            } else {
+                $("#est_11").html(``);
             }
         },
     });
