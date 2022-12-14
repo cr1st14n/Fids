@@ -59,7 +59,7 @@ function cargarItin() {
                         e.OBSERVACION == "PRE-EMBARQUE" ||
                         e.OBSERVACION == "PREEMBARCANDO"
                     ) {
-                        circle = `<i class="fa-solid fa-circle parpadea" style="color:yellow"></i>`;
+                        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
                     }
                     if (e.OBSERVACION == "ABORDANDO") {
                         circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
