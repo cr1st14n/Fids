@@ -75,15 +75,11 @@
         <div class=" card-body">
             <div class="row">
                 <div class=" col-lg-2">
-
-                </div>
-                <div class=" col-lg-2">
                     <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
-                        sizes="" width="140" height="80" srcset="">
+                        sizes="" width="100" height="100" srcset="" style=" button: 0px">
                 </div>
                 <div class="col-lg-4" id="desc_ruta">
-                    <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS</h4>
-                    <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
+                    <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS <span style=" color:white " > - ARRIVALS</span> </h4>
                 </div>
                 <div class="col-lg-4">
                     <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
@@ -113,7 +109,7 @@
     </div>
 
 
-    <marquee style="color: white" scrolldelay="200" truespeed>
+    <marquee style="color:white" scrolldelay="200" truespeed>
         <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es
             responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
 
