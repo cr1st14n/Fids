@@ -4,6 +4,20 @@ date = new Date();
 
 imgAero = { "BOLIVIANA DE AVIACION": "B50015.gif" };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 cargarItin();
 setInterval(() => {
     var today = new Date();
@@ -21,7 +35,7 @@ $("#form_tipoItin").submit(function (e) {
     aero = $("#aero").val();
     tipo = $("#tipo").val();
     $("#md_1").modal("hide");
-    cargarItin();
+    queryCargaItin();
 });
 function cargarItin() {
     $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
@@ -36,8 +50,7 @@ function cargarItin() {
         },
         // dataType: "json */
         success: function (response) {
-            console.log(response);
-            html = response.map(function (e, i, val) {}).join(" ");
+            html = response.map(function (e, i, val) { return makeFilaItin(e) }).join(" ");
             $("#table_itin").html(html);
             if (response.length <= 0) {
                 $("#est_11")
@@ -53,12 +66,12 @@ function cargarItin() {
 
 queryCargaItin = () => {
     fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
-        .then((response) => response.json)
+        .then((response) => response.json())
+        .catch((error) => console.log("Error de data"))
         .then((data) => {
-            html=
-            makeFilaItin(data)
-        })
-        .catch((error) => console.log("Error de data"));
+            html =
+                makeFilaItin(data)
+        });
 };
 makeFilaItin = (e) => {
     if ($("#th_destino").offsetWidth <= 100) {
@@ -94,18 +107,20 @@ makeFilaItin = (e) => {
     }
 
     return (h = `
-<tr>
-    <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-    <td> ${e.HORA_ESTIMADA}</td>
-    <td> ${e.HORA_REAL}</td>
-    <td style="text-align:center">${ruta_1}</td>
-    <td>${e.NRO_VUELO}</td>
-    <td style="color:rgb(138, 224, 9)" name="puerta" >${e.NRO_PUERTA}</td>
-    <td>${circle}</td>
-    <td style="color:yellow" >${e.OBSERVACION}</td>
-</tr>
-`);
+        <tr>
+            <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
+            <td style="color:yellow"> ${e.HORA_ESTIMADA}</td>
+            <td style="color:yellow"> ${e.HORA_REAL}</td>
+            <td style="text-align:center">${ruta_1}</td>
+            <td style="color:yellow">${e.NRO_VUELO}</td>
+            <td style="color:yellow" name="puerta" >${e.NRO_PUERTA}</td>
+            <td >${circle}</td>
+            <td style="color:yellow" >${e.OBSERVACION}</td>
+        </tr>
+        `);
 };
+
+
 function changeTipo(val) {
     console.log(document.getElementById("th_destino").offsetWidth);
     if (aero == val) {

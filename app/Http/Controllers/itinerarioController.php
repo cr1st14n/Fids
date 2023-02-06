@@ -40,14 +40,14 @@ class itinerarioController extends Controller
         // return $request;
         if ($request->input('tipo')=='L' ) {
             # code...
-            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+            return Itinerario::whereDate('FECHA', Carbon::parse('2022-10-10')->format('Y-m-d'))
             ->where('AEROPUERTO', $request->input('aero'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
             ->whereNot('OBSERVACION','ARRIBO')
             ->orderBy('CORRELATIVO','asc')
             ->get();
         } else {
-            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+            return Itinerario::whereDate('FECHA', Carbon::parse('2022-10-10')->format('Y-m-d'))
             ->where('AEROPUERTO', $request->input('aero'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
             ->whereNot('OBSERVACION_INGLES','@@CERRADO')
@@ -60,7 +60,7 @@ class itinerarioController extends Controller
     }
     public function view_1()
     {
-        return view('itin');
+        return view('itin2');
     }
 
 }
