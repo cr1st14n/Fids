@@ -83,7 +83,7 @@
                     </td>
                     <td style="width: 33%">
                         <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
-                        <h5 class="titulo_1" style=" color:white " id="est_11">TIME</h5>
+                        <h5 class="titulo_1" style=" color:rgb(158, 18, 18) " id="est_11"></h5>
                     </td>
                 </tr>
             </table>
@@ -128,7 +128,7 @@
     </div>
 
 
-    <marquee style="color:white" scrolldelay="200" truespeed>
+    <marquee style="color:white" scrolldelay="300" truespeed>
         <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es
             responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
 

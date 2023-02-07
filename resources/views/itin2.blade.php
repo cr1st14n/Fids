@@ -110,7 +110,7 @@
                     </td>
                     <td style="width: 33%">
                         <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
-                        <h5 class="titulo_1" style=" color:white " id="est_11">TIME</h5>
+                        <h5 class="titulo_1" style=" color:white " id="est_11"></h5>
                     </td>
                 </tr>
             </table>

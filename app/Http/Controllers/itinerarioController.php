@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use PhpParser\Node\Stmt\Return_;
 
 class itinerarioController extends Controller
 {
@@ -40,14 +39,14 @@ class itinerarioController extends Controller
         // return $request;
         if ($request->input('tipo')=='L' ) {
             # code...
-            return Itinerario::whereDate('FECHA', Carbon::parse('2022-10-10')->format('Y-m-d'))
+            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
             ->where('AEROPUERTO', $request->input('aero'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
             ->whereNot('OBSERVACION','ARRIBO')
             ->orderBy('CORRELATIVO','asc')
             ->get();
         } else {
-            return Itinerario::whereDate('FECHA', Carbon::parse('2022-10-10')->format('Y-m-d'))
+            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
             ->where('AEROPUERTO', $request->input('aero'))
             ->where('TIPO_OPERACION', $request->input('tipo'))
             ->whereNot('OBSERVACION_INGLES','@@CERRADO')
