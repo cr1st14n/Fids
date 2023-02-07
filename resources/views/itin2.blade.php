@@ -154,7 +154,7 @@ animation-iteration-count: infinite;
             </table>
             <table width="100%" class=" table-responsive table-striped">
                 <tr>
-                    <td style="width: 33%">
+                    <td style="width: 33%;text-align: left">
                         <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
                             sizes="" width="100" height="100" srcset="" style=" button: 0px">
                     </td>
