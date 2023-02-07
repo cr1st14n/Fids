@@ -49,11 +49,13 @@ td {
 }
 
 #img_1 {
-    position: fixed;
+    /* position:fixed;
     top: 5px;
-    right: 5px;
-    width: 250px;
-    height: 60px;
+    right: 5px; */
+    /* width: 250px;
+    height: 60px; */
+    width:70%;
+    height: auto;
 }
 
 thead {
@@ -115,4 +117,3 @@ thead {
         opacity: 1.0;
     }
 }
-

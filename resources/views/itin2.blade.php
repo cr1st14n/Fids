@@ -1,29 +1,62 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NAABOL | ITINERARIOS DE VUELOS</title>
+    <link rel="stylesheet" href="{{ asset('resources/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('resources/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/css/inti.css') }}">
-    <title>NAABOl|FIDS</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.952);
+            color: white;
+        }
+
+        .imagen {
+            opacity: 0.2;
+            position: fixed;
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            border: 0px
+        }
+
+        #img_1 {
+            position: fixed;
+            top: 0cm;
+            right: 0cm;
+
+            width: 10em;
+            height: auto;
+
+        }
+
+        td {
+            text-align: center
+        }
+        p{
+            color: rgb(0, 145, 189)
+        }
+    </style>
 
 </head>
 
 <body>
-    <div class="card" style="background-color: rgb(7, 7, 88)">
+    <img class="imagen" src="resources/img/image_1.jpg" alt="freecodecamp-logo" />
+    <img id="img_1" src="{{ asset('resources/plantilla/img/LOGO_NAABOL_0.png') }}">
+    <div class="card" style="background-color:rgba(255, 0, 0, 0)">
         <div class=" card-body">
-            <table width="100%" class=" table-responsive table-striped">
-                <tr style="border: 0ch">
-                    <td style="width: 20%">
+            <table width="100%" class=" table-responsive table-striped" style="position:relative">
+                <tr>
+                    <td style="width: 30%">
                         <div class="form-group ">
                             <select class=" form-control form-control-sm" name="" id="inp_terminal"
                                 onchange="changeTipo(this.value)"
-                                style="background-color:rgba(7, 35, 88, 0.986); color:white ">
+                                style=" color:yellow; background-color: rgb(0, 0, 0); size:5cm">
                                 <option value="Viru Viru">VIRU VIRU</option>
                                 <option value="El ALTo" selected>EL ALTO</option>
                                 <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
@@ -41,37 +74,31 @@
                             </select>
                         </div>
                     </td>
-                    <td style="width: 20%">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="tipo_1" value="L"
-                                onclick="chageTipo(this.value)" class="custom-control-input" checked="on" checked>
-                            <label class="custom-control-label" for="customRadioInline1"
-                                style="color: white">LLEGADAS</label>
+                    <td style="width: 30% ">
+                        <div class="row">
+                            <div class=" col-sm-6" style="text-align:center">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="tipo_1" value="L"
+                                        onclick="chageTipo(this.value)" class="custom-control-input" checked="on"
+                                        checked>
+                                    <label class="custom-control-label" for="customRadioInline1"
+                                        style="color:yellow">LLEGADAS</label>
+                                </div>
+                            </div>
+                            <div class=" col-sm-6" style="text-align:center">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="tipo_1" value="S"
+                                        onclick="chageTipo(this.value)" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline1"
+                                        style="color:yellow">SALIDAS</label>
+                                </div>
+                            </div>
                         </div>
                     </td>
-                    <td style="width: 20%">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="tipo_1" value="S"
-                                onclick="chageTipo(this.value)" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline1"
-                                style="color: white">SALIDAS</label>
-                        </div>
-
-                    </td>
-
-                    <td style="width: 10%">
-                        <img id="img_1" src="{{ asset('resources/plantilla/img/LOGO_NAABOL_0.png') }}">
-
-                    </td>
+                    <td style="width: 33%"></td>
                 </tr>
             </table>
-        </div>
-
-    </div>
-
-    <div class="card" style="background-color: black">
-        <div class=" card-body">
-            <table width="100%" class=" table-responsive table-striped">>
+            <table width="100%" class=" table-responsive table-striped">
                 <tr>
                     <td style="width: 33%">
                         <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
@@ -83,17 +110,13 @@
                     </td>
                     <td style="width: 33%">
                         <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
-                        <h5 class="titulo_1" style=" color:rgb(158, 18, 18) " id="est_11"></h5>
+                        <h5 class="titulo_1" style=" color:white " id="est_11"></h5>
                     </td>
                 </tr>
             </table>
-        </div>
-    </div>
-    <div class="card" style="background-color: black">
-        <div class=" card-body">
-            <table class="table table-responsive-lg " id="th_destino">
-                <thead>
-                    <tr>
+            <table class="table table-responsive-lg table-striped " style="position:relative;border-color: rgb(0, 0, 0)" id="th_destino" > 
+                <thead class=" thead-dark" style="background-color: black">
+                    <tr style="color:white; text-align:center">
                         <th width="10%">
                             <p>LINEA AÉREA</p>ARILINE
                         </th>
@@ -124,16 +147,16 @@
                     </tr>
                 </tbody>
             </table>
+            <marquee style="color:white" scrolldelay="200" truespeed>
+                <p style="color: white"> NAABOL | El cumplimiento de los itinerarios de vuelo es
+                    responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
+        
+                </p>
+            </marquee>
         </div>
     </div>
 
 
-    <marquee style="color:white" scrolldelay="300" truespeed>
-        <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es
-            responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
-
-        </p>
-    </marquee>
 
     <script src="{{ asset('resources/js/JQ/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('resources/js/bootstrap.bundle.min.js') }}"></script>

@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use PhpParser\Node\Stmt\Return_;
 
 class itinerarioController extends Controller
 {
@@ -60,7 +59,7 @@ class itinerarioController extends Controller
     }
     public function view_1()
     {
-        return view('itin');
+        return view('itin2');
     }
 
 }

@@ -1,10 +1,10 @@
 let aero = "El Alto";
 let tipo = "L";
+let dataItin = Array;
+let conteoIntentos = 0;
 date = new Date();
-
 imgAero = { "BOLIVIANA DE AVIACION": "B50015.gif" };
-
-cargarItin();
+// TODO ---------
 setInterval(() => {
     var today = new Date();
     var now = today.toLocaleTimeString();
@@ -12,17 +12,28 @@ setInterval(() => {
 }, 1000);
 
 setInterval(() => {
-    cargarItin();
-}, 20000);
+    cargarItinerario_2();
+}, 40000);
 
-$("#form_tipoItin").submit(function (e) {
-    e.preventDefault();
+let cargarItinerario_2 = () => {
+    fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
+        .then((response) => response.json())
+        .catch((error) => console.log("Error de data" + error))
+        .then((data) => {
+            console.log(data.length);
+            if (data.length != 0) {
+                makeTbodyItin(data);
+                conteoIntentos = 0;
+                return;
+            }
+            setTimeout(() => {
+                console.log("conte #" + (conteoIntentos += 1));
+                cargarItinerario_2();
+            }, 10000);
+        });
+};
+cargarItinerario_2();
 
-    aero = $("#aero").val();
-    tipo = $("#tipo").val();
-    $("#md_1").modal("hide");
-    cargarItin();
-});
 function cargarItin() {
     $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
     `);
@@ -36,14 +47,16 @@ function cargarItin() {
         },
         // dataType: "json */
         success: function (response) {
-            console.log(response);
-            html = response.map(function (e, i, val) {}).join(" ");
-            $("#table_itin").html(html);
+            dataItin = response;
+            console.log(dataItin);
             if (response.length <= 0) {
                 $("#est_11")
                     .html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
                 <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>`);
                 console.log("actualizando..");
+                $("#table_itin").html("sin Itinerario registados");
+
+                return;
             } else {
                 $("#est_11").html(``);
             }
@@ -53,12 +66,49 @@ function cargarItin() {
 
 queryCargaItin = () => {
     fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
-        .then((response) => response.json)
+        .then((response) => response.json())
+        .catch((error) => console.log("Error de data"))
         .then((data) => {
-            html=
-            makeFilaItin(data)
+            html = makeFilaItin(data);
+        });
+};
+
+function changeTipo(val) {
+    if (aero == val) {
+        return;
+    }
+    aero = val;
+    cargarItinerario_2();
+}
+function chageTipo(val) {
+    if (val == "L") {
+        tipo = val;
+        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
+        $("#desc_ruta").html(`
+        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS</h4>
+        <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
+        `);
+
+        cargarItin();
+    }
+    if (val == "S") {
+        tipo = val;
+        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
+        $("#desc_ruta").html(`
+        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">SALIDAS</h4>
+        <h4 class="titulo_1" style=" color:white ">DEPARTURES</h4>
+        `);
+        cargarItin();
+    }
+}
+// TODO-----------------
+makeTbodyItin = (response) => {
+    html = response
+        .map(function (e, i, val) {
+            return makeFilaItin(e);
         })
-        .catch((error) => console.log("Error de data"));
+        .join(" ");
+    $("#table_itin").html(html);
 };
 makeFilaItin = (e) => {
     if ($("#th_destino").offsetWidth <= 100) {
@@ -94,44 +144,15 @@ makeFilaItin = (e) => {
     }
 
     return (h = `
-<tr>
-    <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-    <td> ${e.HORA_ESTIMADA}</td>
-    <td> ${e.HORA_REAL}</td>
-    <td style="text-align:center">${ruta_1}</td>
-    <td>${e.NRO_VUELO}</td>
-    <td style="color:rgb(138, 224, 9)" name="puerta" >${e.NRO_PUERTA}</td>
-    <td>${circle}</td>
-    <td style="color:yellow" >${e.OBSERVACION}</td>
-</tr>
-`);
+        <tr>
+            <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
+            <td style="color:yellow"> ${e.HORA_ESTIMADA}</td>
+            <td style="color:yellow"> ${e.HORA_REAL}</td>
+            <td style="text-align:center">${ruta_1}</td>
+            <td style="color:yellow">${e.NRO_VUELO}</td>
+            <td style="color:yellow" name="puerta" >${e.NRO_PUERTA}</td>
+            <td >${circle}</td>
+            <td style="color:yellow" >${e.OBSERVACION}</td>
+        </tr>
+        `);
 };
-function changeTipo(val) {
-    console.log(document.getElementById("th_destino").offsetWidth);
-    if (aero == val) {
-        return;
-    }
-    aero = val;
-    cargarItin();
-}
-function chageTipo(val) {
-    if (val == "L") {
-        tipo = val;
-        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
-        $("#desc_ruta").html(`
-        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS</h4>
-        <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
-        `);
-
-        cargarItin();
-    }
-    if (val == "S") {
-        tipo = val;
-        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
-        $("#desc_ruta").html(`
-        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">SALIDAS</h4>
-        <h4 class="titulo_1" style=" color:white ">DEPARTURES</h4>
-        `);
-        cargarItin();
-    }
-}
