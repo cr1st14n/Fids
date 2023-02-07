@@ -36,30 +36,27 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        // return $request;
-        if ($request->input('tipo')=='L' ) {
-            # code...
-            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
-            ->where('AEROPUERTO', $request->input('aero'))
-            ->where('TIPO_OPERACION', $request->input('tipo'))
-            ->whereNot('OBSERVACION','ARRIBO')
-            ->orderBy('CORRELATIVO','asc')
-            ->get();
+        if ($request->input('tipo') == 'L') {       
+            $data = Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+                ->where('AEROPUERTO', $request->input('aero'))
+                ->where('TIPO_OPERACION', $request->input('tipo'))
+                ->whereNot('OBSERVACION', 'ARRIBO')
+                ->orderBy('CORRELATIVO', 'asc')
+                ->get();
         } else {
-            return Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
-            ->where('AEROPUERTO', $request->input('aero'))
-            ->where('TIPO_OPERACION', $request->input('tipo'))
-            ->whereNot('OBSERVACION_INGLES','@@CERRADO')
-            ->whereNot('OBSERVACION_INGLES','@@ARRIBO')
-            ->whereNot('OBSERVACION_INGLES','CLOSED')
-            ->orderBy('CORRELATIVO','asc')
-            ->get();
+            $data = Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
+                ->where('AEROPUERTO', $request->input('aero'))
+                ->where('TIPO_OPERACION', $request->input('tipo'))
+                ->whereNot('OBSERVACION_INGLES', '@@CERRADO')
+                ->whereNot('OBSERVACION_INGLES', '@@ARRIBO')
+                ->whereNot('OBSERVACION_INGLES', 'CLOSED')
+                ->orderBy('CORRELATIVO', 'asc')
+                ->get();
         }
-
+        return $data;
     }
     public function view_1()
     {
         return view('itin2');
     }
-
 }

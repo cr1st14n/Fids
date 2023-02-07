@@ -13,27 +13,28 @@ setInterval(() => {
 
 setInterval(() => {
     cargarItinerario_2();
-}, 40000);
+}, 30000);
 
 let cargarItinerario_2 = () => {
+    console.log("iniciando");
     fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
         .then((response) => response.json())
         .catch((error) => console.log("Error de data" + error))
-        .then((data) => {
-            console.log(data.length);
-            if (data.length != 0) {
-                makeTbodyItin(data);
-                conteoIntentos = 0;
-                return;
-            }
-            setTimeout(() => {
-                console.log("conte #" + (conteoIntentos += 1));
-                cargarItinerario_2();
-            }, 10000);
-        });
+        .then((data) => actualizando(data));
 };
-cargarItinerario_2();
 
+let actualizando = (data) => {
+    console.log(data.length);
+    if (data.length == 0) {
+        cargarItinerario_2();
+    } else {
+        // conteoIntentos = 0;
+        console.log("con data");
+        makeTbodyItin(data);
+    }
+};
+
+cargarItinerario_2();
 function cargarItin() {
     $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
     `);
@@ -74,35 +75,35 @@ queryCargaItin = () => {
 };
 
 function changeTipo(val) {
-    if (aero == val) {
-        return;
+    if (aero != val) {
+        aero = val;
+        cargarItinerario_2();
     }
-    aero = val;
-    cargarItinerario_2();
 }
 function chageTipo(val) {
     if (val == "L") {
         tipo = val;
         $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
         $("#desc_ruta").html(`
-        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS</h4>
-        <h4 class="titulo_1" style=" color:white ">ARRIVALS</h4>
+        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS <span style=" color:white "> -
+                                ARRIVALS</span> </h4>
         `);
 
-        cargarItin();
+        cargarItinerario_2();
     }
     if (val == "S") {
         tipo = val;
         $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
         $("#desc_ruta").html(`
-        <h4 class="titulo_1" style="color: rgb(106, 188, 190)">SALIDAS</h4>
-        <h4 class="titulo_1" style=" color:white ">DEPARTURES</h4>
+        <h4 class="titulo_1" style="color: rgb(156, 209, 56)">SALIDAS <span style=" color:white "> -
+                                DEPARTURES</span> </h4>
         `);
-        cargarItin();
+        cargarItinerario_2();
     }
 }
 // TODO-----------------
 makeTbodyItin = (response) => {
+    console.log(response);
     html = response
         .map(function (e, i, val) {
             return makeFilaItin(e);
@@ -146,11 +147,11 @@ makeFilaItin = (e) => {
     return (h = `
         <tr>
             <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-            <td style="color:yellow"> ${e.HORA_ESTIMADA}</td>
-            <td style="color:yellow"> ${e.HORA_REAL}</td>
+            <td style="color:white"> ${e.HORA_ESTIMADA}</td>
+            <td style="color:white"> ${e.HORA_REAL}</td>
             <td style="text-align:center">${ruta_1}</td>
-            <td style="color:yellow">${e.NRO_VUELO}</td>
-            <td style="color:yellow" name="puerta" >${e.NRO_PUERTA}</td>
+            <td style="color:white">${e.NRO_VUELO}</td>
+            <td style="color:white" name="puerta" >${e.NRO_PUERTA}</td>
             <td >${circle}</td>
             <td style="color:yellow" >${e.OBSERVACION}</td>
         </tr>

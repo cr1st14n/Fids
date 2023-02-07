@@ -38,8 +38,13 @@
         td {
             text-align: center
         }
-        p{
+
+        p {
             color: rgb(0, 145, 189)
+        }
+
+        .titulo_1 {
+            font-size: 35px;
         }
     </style>
 
@@ -53,46 +58,41 @@
             <table width="100%" class=" table-responsive table-striped" style="position:relative">
                 <tr>
                     <td style="width: 30%">
-                        <div class="form-group ">
+                        <div class="form-group " style="text-align: left">
+                            <label for="">Aeropuerto:</label>
                             <select class=" form-control form-control-sm" name="" id="inp_terminal"
                                 onchange="changeTipo(this.value)"
-                                style=" color:yellow; background-color: rgb(0, 0, 0); size:5cm">
-                                <option value="Viru Viru">VIRU VIRU</option>
-                                <option value="El ALTo" selected>EL ALTO</option>
-                                <option value="Jorge Wilstermann">JORGE WILSTERMANN</option>
-                                <option value="Rurrenabaque">RURRENABAQUE</option>
-                                <option value="Guayamerin">GUAYAMERIN</option>
-                                <option value="Potosi">POTOSI</option>
-                                <option value="Cobija">COBIJA</option>
-                                <option value="Riberalta">RIBERALTA</option>
-                                <option value="Oruro">ORURO</option>
-                                <option value="Yacuiba">YACUIBA</option>
-                                <option value="Trinidad">TRINIDAD</option>
-                                <option value="Uyuni">UYUNI</option>
-                                <option value="Tarija">TARIJA</option>
-                                <option value="Sucre">SUCRE</option>
+                                style=" color:rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); size:5cm">
+                                <option style="background-color: rgb(0, 0, 0)" value="Viru Viru">VIRU VIRU</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="El ALTo" selected>EL ALTO
+                                </option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Jorge Wilstermann">JORGE
+                                    WILSTERMANN</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Rurrenabaque">RURRENABAQUE
+                                </option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Guayamerin">GUAYAMERIN</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Potosi">POTOSI</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Cobija">COBIJA</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Riberalta">RIBERALTA</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Oruro">ORURO</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Yacuiba">YACUIBA</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Trinidad">TRINIDAD</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Uyuni">UYUNI</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Tarija">TARIJA</option>
+                                <option style="background-color: rgba(0, 0, 0)" value="Sucre">SUCRE</option>
                             </select>
                         </div>
                     </td>
                     <td style="width: 30% ">
-                        <div class="row">
-                            <div class=" col-sm-6" style="text-align:center">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="tipo_1" value="L"
-                                        onclick="chageTipo(this.value)" class="custom-control-input" checked="on"
-                                        checked>
-                                    <label class="custom-control-label" for="customRadioInline1"
-                                        style="color:yellow">LLEGADAS</label>
-                                </div>
-                            </div>
-                            <div class=" col-sm-6" style="text-align:center">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="tipo_1" value="S"
-                                        onclick="chageTipo(this.value)" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline1"
-                                        style="color:yellow">SALIDAS</label>
-                                </div>
-                            </div>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary btn-sm active">
+                                <input type="radio" name="tipo_1" id="option1" autocomplete="off" value="L"
+                                    onclick="chageTipo(this.value)" checked> LLEGADAS
+                            </label>
+                            <label class="btn btn-secondary btn-sm">
+                                <input type="radio" name="tipo_1" id="option2" autocomplete="off" value="S"
+                                    onclick="chageTipo(this.value)"> SALIDAS
+                            </label>
                         </div>
                     </td>
                     <td style="width: 33%"></td>
@@ -104,17 +104,18 @@
                         <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
                             sizes="" width="100" height="100" srcset="" style=" button: 0px">
                     </td>
-                    <td style="width: 33%">
+                    <td style="width: 33%" id="desc_ruta">
                         <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS <span style=" color:white "> -
                                 ARRIVALS</span> </h4>
                     </td>
-                    <td style="width: 33%">
+                    <td style="width: 33%;text-align: right">
                         <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
                         <h5 class="titulo_1" style=" color:white " id="est_11"></h5>
                     </td>
                 </tr>
             </table>
-            <table class="table table-responsive-lg table-striped " style="position:relative;border-color: rgb(0, 0, 0)" id="th_destino" > 
+            <table class="table table-responsive-lg table-striped "
+                style="position:relative;border-color: rgb(0, 0, 0)" id="th_destino">
                 <thead class=" thead-dark" style="background-color: black">
                     <tr style="color:white; text-align:center">
                         <th width="10%">
@@ -150,7 +151,7 @@
             <marquee style="color:white" scrolldelay="200" truespeed>
                 <p style="color: white"> NAABOL | El cumplimiento de los itinerarios de vuelo es
                     responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)
-        
+
                 </p>
             </marquee>
         </div>
