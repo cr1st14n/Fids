@@ -126,7 +126,14 @@
             </table>
         </div>
     </div>
-
+    <div class="wrapper">
+        <div class="border">
+            <div class="space">
+                <div class="loading">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <marquee style="color:white" scrolldelay="300" truespeed>
         <p style="color: white"> NAABOL | El cumplimiento de los itinerarios es

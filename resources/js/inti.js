@@ -75,6 +75,8 @@ queryCargaItin = () => {
 };
 
 function changeTipo(val) {
+    $("#table_itin").html('<tr></tr>');
+
     if (aero != val) {
         aero = val;
         cargarItinerario_2();
