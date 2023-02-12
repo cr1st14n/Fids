@@ -115,9 +115,9 @@ makeTbodyItin = (response) => {
 };
 makeFilaItin = (e) => {
     if ($("#th_destino").offsetWidth <= 100) {
-        ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA}  </p></MARQUEE>`;
+        ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA0}  </p></MARQUEE>`;
     } else {
-        ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
+        ruta_1 = `<p  style="color: white">${e.RUTA0}  </p>`;
     }
     circle = "";
 
@@ -148,14 +148,14 @@ makeFilaItin = (e) => {
 
     return (h = `
         <tr>
-            <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-            <td style="color:white"> ${e.HORA_ESTIMADA}</td>
-            <td style="color:white"> ${e.HORA_REAL}</td>
-            <td style="text-align:center">${ruta_1}</td>
-            <td style="color:white">${e.NRO_VUELO}</td>
-            <td style="color:white" name="puerta" >${e.NRO_PUERTA}</td>
-            <td >${circle}</td>
-            <td style="color:yellow" >${e.OBSERVACION}</td>
+            <td ><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
+            <td class="celda_1" style="color:white"> ${e.HORA_ESTIMADA}</td>
+            <td class="celda_1" style="color:white"> ${e.HORA_REAL}</td>
+            <td class="celda_1" style="text-align:center">${ruta_1}</td>
+            <td class="celda_1" style="color:white">${e.NRO_VUELO}</td>
+            <td class="celda_1" style="color:white" name="puerta" >${e.NRO_PUERTA}</td>
+            <td class="celda_1" >${circle}</td>
+            <td class="celda_1" style="color:yellow" >${e.OBSERVACION}</td>
         </tr>
         `);
 };
