@@ -36,7 +36,7 @@ class itinerarioController extends Controller
     }
     public function list_vuelos(Request $request)
     {
-        if ($request->input('tipo') == 'L') {       
+        if ($request->input('tipo') == 'L') {
             $data = Itinerario::whereDate('FECHA', Carbon::now()->format('Y-m-d'))
                 ->where('AEROPUERTO', $request->input('aero'))
                 ->where('TIPO_OPERACION', $request->input('tipo'))
@@ -52,6 +52,17 @@ class itinerarioController extends Controller
                 ->whereNot('OBSERVACION_INGLES', 'CLOSED')
                 ->orderBy('CORRELATIVO', 'asc')
                 ->get();
+        }
+        foreach ($data as $key => $value) {
+            $data[$key]['RUTA0']= str_replace('>>',' - ', $value->RUTA);
+            // $text = explode(">>",  $data[$key]["RUTA"]);
+            // $ruta_text = $text[0];
+            // if (sizeof($text) > 1) {
+            //     // foreach ($text as $key => $value) {
+                    
+            //     // }
+            // }
+            // $data[$key]['RUTA0'] = sizeof($text);
         }
         return $data;
     }

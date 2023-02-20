@@ -101,6 +101,65 @@
                 opacity: 1.0;
             }
         }
+
+        #img_SL {
+            width: 150px;
+            height: 100px;
+        }
+
+        .nameTipo {
+
+            /* color: red; */
+            width: 100px;
+            height: 30px;
+            /* border-color: red */
+            content: "laskjdf";
+        }
+
+        @media(max-width:30em) {
+            .cabezera {
+                font-size: 40%;
+            }
+
+            .titulo_1 {
+                font-size: 70%;
+            }
+
+            #img_SL {
+                width: 30%;
+                height: 30%;
+            }
+
+            .d_opciones {
+                font-size: 10px
+            }
+
+            .tipo_1 {
+                font-size: 5px;
+            }
+
+            #img_1 {
+                width: 6em;
+                height: auto;
+            }
+
+            .nameTipo {
+                font-size: 2px;
+                /* color: red; */
+                size: 2em;
+                width: 50%;
+                height: 25px;
+                /* border-color: red */
+            }
+
+            .text1 {
+                font-size: 5px
+            }
+
+            .celda_1 {
+                font-size: 8px;
+            }
+        }
     </style>
 
 </head>
@@ -113,9 +172,9 @@
             <table width="100%" class=" table-responsive table-striped" style="position:relative">
                 <tr>
                     <td style="width: 30%">
-                        <div class="form-group " style="text-align: left">
+                        <div class="form-group d_opciones" style="text-align: left">
                             <label for="">Aeropuerto:</label>
-                            <select class=" form-control form-control-sm" name="" id="inp_terminal"
+                            <select class=" form-control form-control-sm d_opciones" name="" id="inp_terminal"
                                 onchange="changeTipo(this.value)"
                                 style=" color:rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); size:5cm">
                                 <option style="background-color: rgb(0, 0, 0)" value="Viru Viru">VIRU VIRU</option>
@@ -139,62 +198,62 @@
                         </div>
                     </td>
                     <td style="width: 30% ">
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-secondary btn-sm active">
-                                <input type="radio" name="tipo_1" id="option1" autocomplete="off" value="L"
-                                    onclick="chageTipo(this.value)" checked> LLEGADAS
-                            </label>
-                            <label class="btn btn-secondary btn-sm">
-                                <input type="radio" name="tipo_1" id="option2" autocomplete="off" value="S"
-                                    onclick="chageTipo(this.value)"> SALIDAS
-                            </label>
+
+                        <div class="btn-group btn-group-sm btn-purple" role="group"
+                            aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio1" value="L"
+                                onclick="chageTipo(this.value)" checked>
+                            <label class="btn btn-outline-info nameTipo" for="btnradio1"></label>
+
+                            <input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio2" value="S"
+                                onclick="chageTipo(this.value)">
+                            <label class="btn btn-outline-info nameTipo" for="btnradio2"></label>
                         </div>
                     </td>
                     <td style="width: 33%"></td>
                 </tr>
             </table>
-            <table width="100%" class=" table-responsive table-striped">
+            <table width="100%" class=" table-responsive table-striped ">
                 <tr>
                     <td style="width: 33%;text-align: left">
                         <img id="img_SL" src="{{ asset('resources/plantilla/img/llegadas.png') }}" alt=""
-                            sizes="" width="100" height="100" srcset="" style=" button: 0px">
+                            style=" button: 0px">
                     </td>
-                    <td style="width: 33%" id="desc_ruta">
+                    <td style="width: 33%" id="desc_ruta" class="cabezeraInfo">
                         <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS <span style=" color:white "> -
                                 ARRIVALS</span> </h4>
                     </td>
                     <td style="width: 33%;text-align: right">
                         <h4 class="titulo_1" style=" color:white " id="time_1">TIME</h4>
-                        <h5 class="titulo_1" style=" color:white " id="est_11"></h5>
                     </td>
                 </tr>
             </table>
-           
+
             <table class="table table-responsive-lg table-striped "
                 style="position:relative;border-color: rgb(0, 0, 0)" id="th_destino">
-                <thead class=" thead-dark" style="background-color: black">
+                <thead class=" thead-dark cabezera" style="background-color: black">
                     <tr style="color:white; text-align:center">
                         <th width="10%">
-                            <p>LINEA AÉREA</p>ARILINE
+                            LINEA AÉREA
                         </th>
-                        <th width="10%" style="font-size: 15px">
-                            <p>HORA ESTIMADA</p>ESTIMATED TIME
+                        <th width="10%">
+                            HORA ESTIMADA
                         </th>
-                        <th width="10%" style="font-size: 15px">
-                            <p>HORA REAL</p>ACTUAL TIME
+                        <th width="10%">
+                            HORA REAL
                         </th>
                         <th width="20%" id="th_destino">
-                            <p>DESTINO</p>DESTINATION
+                            DESTINO
+                        </th>
+                        <th width="10">
+                            VUELO
                         </th>
                         <th width="10%">
-                            <p>VUELO</p>FLIGHT
-                        </th>
-                        <th width="10%">
-                            <p>PUERTA</p>GATE
+                            PUERTA
                         </th>
                         <th width="1%" align="rigth"></th>
                         <th width="10%">
-                            <p>COMENTARIOS</p>REMARKS
+                            COMENTARIOS
                         </th>
                     </tr>
                 </thead>
@@ -204,7 +263,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <marquee style="color:white" scrolldelay="200" truespeed>
                 <p style="color: white"> NAABOL | El cumplimiento de los itinerarios de vuelo es
                     responsabilidad exclusiva de la Aerolínea. Ultima actualización: (Hace 2 minutos)

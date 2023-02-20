@@ -2,6 +2,9 @@ let aero = "El Alto";
 let tipo = "L";
 let dataItin = Array;
 let conteoIntentos = 0;
+ContenidoSinVuelos = `<tr>
+<td colspan="8" style="color: white">SIN VUELOS PROGRAMADOS...</td>
+</tr>`;
 date = new Date();
 imgAero = { "BOLIVIANA DE AVIACION": "B50015.gif" };
 // TODO ---------
@@ -22,14 +25,20 @@ let cargarItinerario_2 = () => {
     .catch((error) => console.log("Error de data" + error))
     .then((data) => actualizando(data));
 };
-
 let actualizando = (data) => {
   console.log(data.length);
   if (data.length == 0) {
-    cargarItinerario_2();
+    conteoIntentos += 1;
+    if (conteoIntentos == 10) {
+      console.log("sin itinerarios cargados");
+      $("#table_itin").html(ContenidoSinVuelos);
+    } else {
+      cargarItinerario_2();
+    }
   } else {
     // conteoIntentos = 0;
     console.log("con data");
+    conteoIntentos = 0;
     makeTbodyItin(data);
   }
 };
@@ -72,9 +81,11 @@ queryCargaItin = () => {
       html = makeFilaItin(data);
     });
 };
-
+contCargando = `<tr>
+<td colspan="8" style="color: white">Cargando ...</td>
+</tr>`;
 function changeTipo(val) {
-  $("#table_itin").html("<tr></tr>");
+  $("#table_itin").html(contCargando);
 
   if (aero != val) {
     aero = val;
@@ -82,7 +93,7 @@ function changeTipo(val) {
   }
 }
 function chageTipo(val) {
-  $("#table_itin").html("<tr></tr>");
+  $("#table_itin").html(contCargando);
 
   if (val == "L") {
     tipo = val;
@@ -116,9 +127,9 @@ makeTbodyItin = (response) => {
 };
 makeFilaItin = (e) => {
   if ($("#th_destino").offsetWidth <= 100) {
-    ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA}  </p></MARQUEE>`;
+    ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA0}  </p></MARQUEE>`;
   } else {
-    ruta_1 = `<p  style="color: white">${e.RUTA}  </p>`;
+    ruta_1 = `<p  style="color: white">${e.RUTA0}  </p>`;
   }
   circle = "";
 
@@ -149,14 +160,14 @@ makeFilaItin = (e) => {
 
   return (h = `
         <tr>
-            <td><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
-            <td style="color:white"> ${e.HORA_ESTIMADA}</td>
-            <td style="color:white"> ${e.HORA_REAL}</td>
-            <td style="text-align:center">${ruta_1}</td>
-            <td style="color:white">${e.NRO_VUELO}</td>
-            <td style="color:white" name="puerta" >${e.NRO_PUERTA}</td>
-            <td >${circle}</td>
-            <td style="color:yellow" >${e.OBSERVACION}</td>
+            <td ><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
+            <td class="celda_1" style="color:white"> ${e.HORA_ESTIMADA}</td>
+            <td class="celda_1" style="color:white"> ${e.HORA_REAL}</td>
+            <td class="celda_1" style="text-align:center">${ruta_1}</td>
+            <td class="celda_1" style="color:white">${e.NRO_VUELO}</td>
+            <td class="celda_1" style="color:white" name="puerta" >${e.NRO_PUERTA}</td>
+            <td class="celda_1" >${circle}</td>
+            <td class="celda_1" style="color:yellow" >${e.OBSERVACION}</td>
         </tr>
         `);
 };
