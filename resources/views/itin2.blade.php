@@ -259,7 +259,6 @@
                 </thead>
                 <tbody id="table_itin">
                     <tr>
-
                     </tr>
                 </tbody>
             </table>

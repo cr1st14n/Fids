@@ -2,151 +2,163 @@ let aero = "El Alto";
 let tipo = "L";
 let dataItin = Array;
 let conteoIntentos = 0;
+ContenidoSinVuelos = `<tr>
+<td colspan="8" style="color: white">SIN VUELOS PROGRAMADOS...</td>
+</tr>`;
 date = new Date();
 imgAero = { "BOLIVIANA DE AVIACION": "B50015.gif" };
 // TODO ---------
 setInterval(() => {
-    var today = new Date();
-    var now = today.toLocaleTimeString();
-    $("#time_1").html(now);
+  var today = new Date();
+  var now = today.toLocaleTimeString();
+  $("#time_1").html(now);
 }, 1000);
 
 setInterval(() => {
-    cargarItinerario_2();
+  cargarItinerario_2();
 }, 30000);
 
 let cargarItinerario_2 = () => {
-    console.log("iniciando");
-    fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
-        .then((response) => response.json())
-        .catch((error) => console.log("Error de data" + error))
-        .then((data) => actualizando(data));
+  console.log("iniciando");
+  fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
+    .then((response) => response.json())
+    .catch((error) => console.log("Error de data" + error))
+    .then((data) => actualizando(data));
 };
-
 let actualizando = (data) => {
-    console.log(data.length);
-    if (data.length == 0) {
-        cargarItinerario_2();
+  console.log(data.length);
+  if (data.length == 0) {
+    conteoIntentos += 1;
+    if (conteoIntentos == 10) {
+      console.log("sin itinerarios cargados");
+      $("#table_itin").html(ContenidoSinVuelos);
     } else {
-        // conteoIntentos = 0;
-        console.log("con data");
-        makeTbodyItin(data);
+      cargarItinerario_2();
     }
+  } else {
+    // conteoIntentos = 0;
+    console.log("con data");
+    conteoIntentos = 0;
+    makeTbodyItin(data);
+  }
 };
 
 cargarItinerario_2();
 function cargarItin() {
-    $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
+  $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>  CARGANDO..
     `);
-    // $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
-    $.ajax({
-        type: "get",
-        url: "/Fids/itin/vuelos",
-        data: {
-            aero: aero,
-            tipo: tipo,
-        },
-        // dataType: "json */
-        success: function (response) {
-            dataItin = response;
-            console.log(dataItin);
-            if (response.length <= 0) {
-                $("#est_11")
-                    .html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
+  // $("#table_itin").html(`<td rowspan="7">CARGANDO...</td>`);
+  $.ajax({
+    type: "get",
+    url: "/Fids/itin/vuelos",
+    data: {
+      aero: aero,
+      tipo: tipo,
+    },
+    // dataType: "json */
+    success: function (response) {
+      dataItin = response;
+      console.log(dataItin);
+      if (response.length <= 0) {
+        $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
                 <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>`);
-                console.log("actualizando..");
-                $("#table_itin").html("sin Itinerario registados");
+        console.log("actualizando..");
+        $("#table_itin").html("sin Itinerario registados");
 
-                return;
-            } else {
-                $("#est_11").html(``);
-            }
-        },
-    });
+        return;
+      } else {
+        $("#est_11").html(``);
+      }
+    },
+  });
 }
 
 queryCargaItin = () => {
-    fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
-        .then((response) => response.json())
-        .catch((error) => console.log("Error de data"))
-        .then((data) => {
-            html = makeFilaItin(data);
-        });
+  fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
+    .then((response) => response.json())
+    .catch((error) => console.log("Error de data"))
+    .then((data) => {
+      html = makeFilaItin(data);
+    });
 };
-
+contCargando = `<tr>
+<td colspan="8" style="color: white">Cargando ...</td>
+</tr>`;
 function changeTipo(val) {
-    $("#table_itin").html('<tr></tr>');
+  $("#table_itin").html(contCargando);
 
-    if (aero != val) {
-        aero = val;
-        cargarItinerario_2();
-    }
+  if (aero != val) {
+    aero = val;
+    cargarItinerario_2();
+  }
 }
 function chageTipo(val) {
-    if (val == "L") {
-        tipo = val;
-        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
-        $("#desc_ruta").html(`
+  $("#table_itin").html(contCargando);
+
+  if (val == "L") {
+    tipo = val;
+    $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/llegadas.png");
+    $("#desc_ruta").html(`
         <h4 class="titulo_1" style="color: rgb(156, 209, 56)">LLEGADAS <span style=" color:white "> -
                                 ARRIVALS</span> </h4>
         `);
 
-        cargarItinerario_2();
-    }
-    if (val == "S") {
-        tipo = val;
-        $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
-        $("#desc_ruta").html(`
+    cargarItinerario_2();
+  }
+  if (val == "S") {
+    tipo = val;
+    $("#img_SL").attr("src", "/Fids/resources/Plantilla/img/salidas.png");
+    $("#desc_ruta").html(`
         <h4 class="titulo_1" style="color: rgb(156, 209, 56)">SALIDAS <span style=" color:white "> -
                                 DEPARTURES</span> </h4>
         `);
-        cargarItinerario_2();
-    }
+    cargarItinerario_2();
+  }
 }
 // TODO-----------------
 makeTbodyItin = (response) => {
-    console.log(response);
-    html = response
-        .map(function (e, i, val) {
-            return makeFilaItin(e);
-        })
-        .join(" ");
-    $("#table_itin").html(html);
+  console.log(response);
+  html = response
+    .map(function (e, i, val) {
+      return makeFilaItin(e);
+    })
+    .join(" ");
+  $("#table_itin").html(html);
 };
 makeFilaItin = (e) => {
-    if ($("#th_destino").offsetWidth <= 100) {
-        ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA0}  </p></MARQUEE>`;
-    } else {
-        ruta_1 = `<p  style="color: white">${e.RUTA0}  </p>`;
-    }
-    circle = "";
+  if ($("#th_destino").offsetWidth <= 100) {
+    ruta_1 = `<MARQUEE style="color:white"scrolldelay ="200" truespeed >   <p  style="color: white">${e.RUTA0}  </p></MARQUEE>`;
+  } else {
+    ruta_1 = `<p  style="color: white">${e.RUTA0}  </p>`;
+  }
+  circle = "";
 
-    if (e.OBSERVACION == "NUEVA HORA") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
-    }
-    if (e.OBSERVACION == "CANCELADO") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
-    }
-    if (e.OBSERVACION == "EN HORARIO") {
-        circle = `<i class="fa-solid fa-circle " style="color:greenyellow"></i>`;
-    }
-    if (e.OBSERVACION == "PRE-EMBARQUE" || e.OBSERVACION == "PREEMBARCANDO") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
-    }
-    if (e.OBSERVACION == "ABORDANDO") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
-    }
-    if (e.OBSERVACION == "EN TIERRA") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
-    }
-    if (e.OBSERVACION == "DEMORADO") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
-    }
-    if (e.OBSERVACION == "INFORMES") {
-        circle = `<i class="fa-solid fa-circle parpadea" style="color:cyan"></i>`;
-    }
+  if (e.OBSERVACION == "NUEVA HORA") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+  }
+  if (e.OBSERVACION == "CANCELADO") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
+  }
+  if (e.OBSERVACION == "EN HORARIO") {
+    circle = `<i class="fa-solid fa-circle " style="color:greenyellow"></i>`;
+  }
+  if (e.OBSERVACION == "PRE-EMBARQUE" || e.OBSERVACION == "PREEMBARCANDO") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+  }
+  if (e.OBSERVACION == "ABORDANDO") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+  }
+  if (e.OBSERVACION == "EN TIERRA") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:greenyellow"></i>`;
+  }
+  if (e.OBSERVACION == "DEMORADO") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:red"></i>`;
+  }
+  if (e.OBSERVACION == "INFORMES") {
+    circle = `<i class="fa-solid fa-circle parpadea" style="color:cyan"></i>`;
+  }
 
-    return (h = `
+  return (h = `
         <tr>
             <td ><img width="60" height="25" src="/Fids/resources/Plantilla/img/Aerolineas/${e.ID_EMPRESA}.png" alt=""></td>
             <td class="celda_1" style="color:white"> ${e.HORA_ESTIMADA}</td>
