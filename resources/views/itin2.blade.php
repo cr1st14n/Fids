@@ -198,13 +198,28 @@
                         </div>
                     </td>
                     <td style="width: 30% ">
+                        <style>
+                            @media(max-width:960px) {
+                                .bottonTipo {
+                                    font-size: 100%;
+                                }
+                            }
 
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary btn-info" onclick="chageTipo(this.value)"
-                                value="L" style="font-size: 50%;"><i class=" fa fa-arrow-down"></i>
-                                LLEGADAS</button>
-                            <button type="button" class="btn btn-secondary btn-info" onclick="chageTipo(this.value)"
-                                value="S" style="font-size: 50%">SALIDAS <i class=" fa fa-arrow-up"></i></button>
+                            @media(max-width:860px) {
+                                .bottonTipo {
+                                    font-size: 35%;
+                                }
+                            }
+                        </style>
+                        <div style="margin: 0px">
+                            <div class="btn-group" style="text-align: center" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-secondary btn-info btn bottonTipo"
+                                    onclick="chageTipo(this.value)" value="L"><i class=" fa fa-arrow-down"></i>
+                                    LLEGADAS</button>
+                                <button type="button" class="btn btn-secondary btn-info btn bottonTipo"
+                                    onclick="chageTipo(this.value)" value="S">SALIDAS <i
+                                        class=" fa fa-arrow-up"></i></button>
+                            </div>
                         </div>
                         {{-- <div class="btn-group btn-group-sm btn-purple" role="group"
                             aria-label="Basic radio toggle button group">
