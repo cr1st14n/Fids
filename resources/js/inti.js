@@ -19,14 +19,14 @@ setInterval(() => {
 }, 30000);
 
 let cargarItinerario_2 = () => {
-  console.log("iniciando");
+  // console.log("iniciando");
   fetch(`/Fids/itin/vuelos?aero=${aero}&tipo=${tipo}`)
     .then((response) => response.json())
     .catch((error) => console.log("Error de data" + error))
     .then((data) => actualizando(data));
 };
 let actualizando = (data) => {
-  console.log(data.length);
+  // console.log(data.length);
   if (data.length == 0) {
     conteoIntentos += 1;
     if (conteoIntentos == 10) {
@@ -37,7 +37,7 @@ let actualizando = (data) => {
     }
   } else {
     // conteoIntentos = 0;
-    console.log("con data");
+    // console.log("con data");
     conteoIntentos = 0;
     makeTbodyItin(data);
   }
@@ -62,7 +62,7 @@ function cargarItin() {
       if (response.length <= 0) {
         $("#est_11").html(`<i class="fa-solid fa-cog fa-spin"></i>Actualizando..
                 <i class="fa-solid fa-cog fa-spin fa-spin-reverse"></i>`);
-        console.log("actualizando..");
+        // console.log("actualizando..");
         $("#table_itin").html("sin Itinerario registados");
 
         return;
@@ -117,7 +117,7 @@ function chageTipo(val) {
 }
 // TODO-----------------
 makeTbodyItin = (response) => {
-  console.log(response);
+  // console.log(response);
   html = response
     .map(function (e, i, val) {
       return makeFilaItin(e);

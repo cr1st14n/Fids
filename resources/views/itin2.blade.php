@@ -199,7 +199,14 @@
                     </td>
                     <td style="width: 30% ">
 
-                        <div class="btn-group btn-group-sm btn-purple" role="group"
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary btn-info" onclick="chageTipo(this.value)"
+                                value="L" style="font-size: 50%;"><i class=" fa fa-arrow-down"></i>
+                                LLEGADAS</button>
+                            <button type="button" class="btn btn-secondary btn-info" onclick="chageTipo(this.value)"
+                                value="S" style="font-size: 50%">SALIDAS <i class=" fa fa-arrow-up"></i></button>
+                        </div>
+                        {{-- <div class="btn-group btn-group-sm btn-purple" role="group"
                             aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio1" value="L"
                                 onclick="chageTipo(this.value)" checked>
@@ -208,7 +215,7 @@
                             <input type="radio" class="btn-check btn-sm" name="btnradio" id="btnradio2" value="S"
                                 onclick="chageTipo(this.value)">
                             <label class="btn btn-outline-info nameTipo" for="btnradio2"></label>
-                        </div>
+                        </div> --}}
                     </td>
                     <td style="width: 33%"></td>
                 </tr>
@@ -229,8 +236,8 @@
                 </tr>
             </table>
 
-            <table class="table table-responsive-lg table-striped "
-                style="position:relative;border-color: rgb(0, 0, 0)" id="th_destino">
+            <table class="table table-responsive-lg table-striped " style="position:relative;border-color: rgb(0, 0, 0)"
+                id="th_destino">
                 <thead class=" thead-dark cabezera" style="background-color: black">
                     <tr style="color:white; text-align:center">
                         <th width="10%">
